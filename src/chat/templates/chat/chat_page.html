@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load i18n static %}
+        <meta charset="UTF-8">
+        <title>Chat</title>
+    </head>
+    <body>
+        <center>
+            <h1>
+                Hello{% if request.user.is_authenticated %} {{ request.user }}{% endif %}, welcome to my chat site!
+            </h1>
+        </center>
+        <br>
+
+        {% if request.user.is_authenticated %}
+        <center>Logout the chat Page <a href="{% url 'logout_user' %}">Logout</a></center>
+        {% endif %}
+
+        <div class="chat_item_container" id="id_chat_item_container" style="font-size: 20px">
+            <br />
+            <input type="text" id="id_message_send_input" />
+            <button type="submit" id="id_message_send_button">Send Message</button>
+            <br />
+            <br />
+        </div>
+
+        <script src="{% static 'chat/chat_page.js' %}"></script>
+    </body>
+</html>
